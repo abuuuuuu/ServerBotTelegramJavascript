@@ -1,0 +1,81 @@
+{
+    "config":{
+        "inputs":[
+            {
+                "id":"telegramtoken",
+                "label":"Token de Telegram",
+                "value":"[ Token de Telegram]",
+                "type":"input"
+            },
+            {
+                "id":"segonsupdatelegram",
+                "label":"Segons d'actualització del Telegram",
+                "value":"4",
+                "type":"number"
+            },
+            {
+                "id":"notificarpreguntes",
+                "label":"Notificar preguntes desconegudes",
+                "value":false,
+                "type":"checkbox",
+                "check":true
+            },
+            {
+                "id":"chatidnotificar",
+                "label":"Chat Id propi per notificar",
+                "value":"[ Chat Id on rebre les preguntes desconegudes ]",
+                "type":"input"
+            }
+        ]
+    },
+    "comandes":{
+        "saberchatid":"chatid",
+        "modificartemps":"modificar temps:"
+    },
+    "preguntes":[
+        {
+            "pregunta":"/start",
+            "resposta":"Benvingut!!! Espero poder-te ajudar"
+        },
+        {
+            "pregunta":"hola",
+            "resposta":"adeu"
+        },
+        {
+            "pregunta":"si",
+            "resposta":"no"
+        },
+        {
+            "pregunta":["html","xml"],
+            "resposta":"hola <b>que</b> tal"
+        },
+        {
+            "pregunta":"tinc un dubte",
+            "resposta":"perfecte! en que et puc ajudar?"
+        },
+        {
+            "pregunta":"/pregunta1",
+            "resposta":"Primera resposta configurada"
+        },
+        {
+            "pregunta":"/pregunta2",
+            "resposta":"Segona resposta configurada"
+        }
+    ],
+    "paraules":[
+        {
+            "paraula":["ajuda","help"],
+            "resposta":"En que et puc ajudar?"
+        },
+        {
+            "paraula":"musica",
+            "resposta":"La música és cultura"
+        }
+    ],
+    "preguntesincorrectes":[
+        "No t'he entès",
+        "M'ho pots dir d'un altra manera",
+        "No sabria que dir-te",
+        "No hem queda clar"
+    ]
+}

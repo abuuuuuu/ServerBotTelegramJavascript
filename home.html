@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Server Bot Telegram by Javascript</title>
+        <script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+        <link href="jquery-ui.min.css" rel="stylesheet">
+        <link href="site.ccss" rel="stylesheet">
+        <link href="home.css" rel="stylesheet">
+        <link href="jquery.mobile-1.4.5.min.css" rel="stylesheet">
+        <script src="jquery.dataTables.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script type="text/javascript" src="telegram.js"></script>
+        <script type="text/javascript" src="handlebars.js"></script>
+        <script id="tmplConfig" type="tmplHandlebars">
+            <div class="titleconfig">Configuració del Bot</div>
+            {{#each inputs}}
+                <div class="input">
+                    <label>{{label}}</label>
+                    {{#if check}}
+                        {{#if value}}
+                            <input type="{{type}}" id="{{id}}" checked="checked" />
+                        {{else}}
+                            <input type="{{type}}" id="{{id}}" />
+                        {{/if}}
+                    {{else}}
+                        <input type="{{type}}" id="{{id}}" value="{{value}}" />
+                    {{/if}}
+                </div>
+            {{/each}}
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <header>
+                <div class="telegramstate telegramstop"></div> 
+                <div class="titol">Server Bot Telegram</div>
+                <input type='file' id="uploadconfig" accept='text/plain' onchange='openFile(event)' style='display: none;'><br>
+                <input type='file' id="uploaddata" accept='text/plain' onchange='openFileData(event)' style='display: none;'><br>
+            </header>
+            <nav>
+                <div id='output' class="config">
+                    S'ha d'activar el Bot
+                </div>        
+            </nav>
+            <main>
+                <div class="containermain">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Nom</th>
+                                <th>Usuari</th>
+                                <th>Missatge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    </div>
+              </main>
+            <footer>
+                <button id="Guardar">Guardar</button>
+                <button id="Carregar">Carregar</button>
+            </footer>
+        </div>
+          
+    </body>
+</html>
