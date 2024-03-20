@@ -71,18 +71,20 @@ function SendMessage(chatid,message){
     });
 }
 function GetResposta(message){
+    var messageoriginal=message;
+    message=message.toLowerCase().trim();
     if (dataFile.preguntes.length>0){
         var res='';
         $.each(dataFile.preguntes,function(){
             if (typeof this.pregunta=='string'){
-                if (this.pregunta==message){
+                if (this.pregunta.toLowerCase().trim()==message){
                     res=this.resposta;
                     return false;
                 }    
             }else{
                 var tempresp=this.resposta;
                 $.each(this.pregunta,function(){
-                    if (this==message){
+                    if (this.toLowerCase().trim()==message){
                         res=tempresp;
                         return false;
                     }    
@@ -95,14 +97,14 @@ function GetResposta(message){
         }
         $.each(dataFile.paraules,function(){
             if (typeof this.paraula=='string'){
-                if (message.indexOf(this.paraula)>=0){
+                if (message.indexOf(this.paraula.toLowerCase().trim())>=0){
                     res=this.resposta;
                     return false;
                 }
             }else{
                 var tempresp=this.resposta;
                 $.each(this.paraula,function(){
-                    if (message.indexOf(this)>=0){
+                    if (message.indexOf(this.toLowerCase().trim())>=0){
                         res=tempresp;
                         return false;
                     }    
@@ -116,7 +118,7 @@ function GetResposta(message){
         if ($('#notificarpreguntes').is(':checked')==true){
             var chatidnotif=$('#chatidnotificar').val();
             if (chatidnotif.length>0){
-                SendMessage(chatidnotif,'Missatge: '+message);
+                SendMessage(chatidnotif,'Missatge: '+messageoriginal);
             }
         }
         return dataFile.preguntesincorrectes[parseInt(Math.random() * dataFile.preguntesincorrectes.length)];
