@@ -192,7 +192,7 @@ function GetMessages(){
                                 novapregunta=novapregunta.split("-");
                                 if (novapregunta.length==2){
                                     var itempregunta={
-                                        paraula:novapregunta[0],
+                                        pregunta:novapregunta[0],
                                         resposta:novapregunta[1]
                                     };
                                     dataFile.preguntes.push(itempregunta);
