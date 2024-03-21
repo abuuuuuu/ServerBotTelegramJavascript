@@ -183,7 +183,7 @@ function GetMessages(){
                                 SaveFile('Config'+(new Date().toISOString().split('.')[0].replace(/[^\d]/gi,'')).toString()+'.json',JSON.stringify(dataFile));
                                 SendMessage(this.message.chat.id,"S'ha afegit la nova paraula");
                             }else{
-                                SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova paraula");
+                                SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova paraula. S'ha de separar la paraula i la resposta amb un guió. El format correcte es: novaparaula-resposta de la paraula");
                             }
                         }else{
                             if (this.message.chat.id==$('#chatidnotificar').val() && dataFile.comandes.afegirpregunta && dataFile.comandes.afegirpregunta.length<text.length &&
@@ -199,7 +199,7 @@ function GetMessages(){
                                     SaveFile('Config'+(new Date().toISOString().split('.')[0].replace(/[^\d]/gi,'')).toString()+'.json',JSON.stringify(dataFile));
                                     SendMessage(this.message.chat.id,"S'ha afegit la nova pregunta");
                                 }else{
-                                    SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova pregunta");
+                                    SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova pregunta. S'ha de separar la pregunta i la resposta amb un guió. El format correcte es: text nova pregunta-resposta de la pregunta");
                                 }
                             }else{
                                 SendMessage(this.message.chat.id,GetResposta(text));
