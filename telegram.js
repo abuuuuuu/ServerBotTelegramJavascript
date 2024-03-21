@@ -165,12 +165,46 @@ function GetMessages(){
                 if (dataFile.comandes.saberchatid && dataFile.comandes.saberchatid==text){
                     SendMessage(this.message.chat.id,this.message.chat.id.toString());
                 }else{
-                    if (dataFile.comandes.modificartemps && dataFile.comandes.modificartemps.length<text.length &&
+                    if (this.message.chat.id==$('#chatidnotificar').val() && dataFile.comandes.modificartemps && dataFile.comandes.modificartemps.length<text.length &&
                         text.substring(0,dataFile.comandes.modificartemps.length)==dataFile.comandes.modificartemps){
                         $('#segonsupdatelegram').val(text.substring(dataFile.comandes.modificartemps.length));
                         SendMessage(this.message.chat.id,"S'ha modificat els temps d'actualització");
                     }else{
-                        SendMessage(this.message.chat.id,GetResposta(text));
+                        if (this.message.chat.id==$('#chatidnotificar').val() && dataFile.comandes.afegirparaula && dataFile.comandes.afegirparaula.length<text.length &&
+                            text.substring(0,dataFile.comandes.afegirparaula.length)==dataFile.comandes.afegirparaula){
+                            var novaparaula=text.substring(dataFile.comandes.afegirparaula.length);
+                            novaparaula=novaparaula.split("-");
+                            if (novaparaula.length==2){
+                                var itemparaula={
+                                    paraula:novaparaula[0],
+                                    resposta:novaparaula[1]
+                                };
+                                dataFile.paraules.push(itemparaula);
+                                SaveFile('Config'+(new Date().toISOString().split('.')[0].replace(/[^\d]/gi,'')).toString()+'.json',JSON.stringify(dataFile));
+                                SendMessage(this.message.chat.id,"S'ha afegit la nova paraula");
+                            }else{
+                                SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova paraula");
+                            }
+                        }else{
+                            if (this.message.chat.id==$('#chatidnotificar').val() && dataFile.comandes.afegirpregunta && dataFile.comandes.afegirpregunta.length<text.length &&
+                                text.substring(0,dataFile.comandes.afegirpregunta.length)==dataFile.comandes.afegirpregunta){
+                                var novapregunta=text.substring(dataFile.comandes.afegirpregunta.length);
+                                novapregunta=novapregunta.split("-");
+                                if (novapregunta.length==2){
+                                    var itempregunta={
+                                        paraula:novapregunta[0],
+                                        resposta:novapregunta[1]
+                                    };
+                                    dataFile.preguntes.push(itempregunta);
+                                    SaveFile('Config'+(new Date().toISOString().split('.')[0].replace(/[^\d]/gi,'')).toString()+'.json',JSON.stringify(dataFile));
+                                    SendMessage(this.message.chat.id,"S'ha afegit la nova pregunta");
+                                }else{
+                                    SendMessage(this.message.chat.id,"No s'ha indicat correctament la nova pregunta");
+                                }
+                            }else{
+                                SendMessage(this.message.chat.id,GetResposta(text));
+                            }
+                        }
                     }
                 }
             });

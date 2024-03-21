@@ -30,7 +30,9 @@
     },
     "comandes":{
         "saberchatid":"chatid",
-        "modificartemps":"modificar temps:"
+        "modificartemps":"modificar temps:",
+        "afegirparaula":"afegir paraula:",
+        "afegirpregunta":"afegir pregunta:"
     },
     "preguntes":[
         {
