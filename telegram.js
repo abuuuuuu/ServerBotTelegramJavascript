@@ -158,9 +158,9 @@ function GetMessages(){
                     text=this.message.text;
                 }
                 try{
-                    datatable.fnAddData([GetDateTelegram(this.message.date),nom,alies,text]);
+                    datatable.fnAddData([this.message.chat.id,GetDateTelegram(this.message.date),nom,alies,text]);
                 }catch(e){
-                    datatable.fnAddData(['','','',e.message]);
+                    datatable.fnAddData([0,'','','',e.message]);
                 }
                 if (dataFile.comandes.saberchatid && dataFile.comandes.saberchatid==text){
                     SendMessage(this.message.chat.id,this.message.chat.id.toString());
@@ -237,4 +237,5 @@ $(document).ready(function(){
         "bJQueryUI": true,
         "sPaginationType": "full_numbers"
     });
+    datatable.fnSetColumnVis(0, false);
 });

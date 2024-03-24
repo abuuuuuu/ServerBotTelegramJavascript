@@ -9,13 +9,14 @@
     grid-template-rows: 50px 1fr 50px;
     grid-template-columns: 300px 1fr;
   }
-div.telegramstate{
+  div.telegramstate {
     width: 30px;
     height: 30px;
     float: right;
     margin-top: 10px;
     margin-right: 10px;
     cursor: pointer;
+    background-size: 30px;
 }
 div.titol{
     width: 100%;
@@ -25,10 +26,10 @@ div.titol{
     font-weight: bold;
 }
 div.telegramstart{
-    background-image: radial-gradient(green,green,transparent);
+  background-image: url('on.png');
 }
-div.telegramstop{
-    background-image: radial-gradient(gray,gray,transparent);
+div.telegramstop {
+  background-image: url('off.png');
 }
   #page > header {
     grid-area: head;
